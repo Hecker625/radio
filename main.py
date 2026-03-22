@@ -1,4 +1,5 @@
 from playsound import playsound
+from multiprocessing import Process
 
 stations = {
     88.5: "https://knkx-live-a.edge.audiocdn.com/6284_256k",
@@ -14,16 +15,27 @@ stations = {
     107.7: "https://live.amperwave.net/direct/audacy-knddfmaac-imc"
 }
 
+def play(station):
+    playsound(station)
+
 while True:
     print("Frequency Options:")
     for station in stations:
         print(station)
-
+    
     choice = float(input("Enter your frequency: "))
     if choice in stations:
         station = stations[choice]
-        playsound(station)
-        break
+        radio = Process(target=play, args=(station,))
+        radio.start()
+        control = input('Press enter to change the station or "quit" to exit: ').strip().lower()
+        if control == "quit":
+            print("Thanks for using the radio :)")
+            radio.terminate()
+            exit()
+        else:
+            radio.terminate()
+
 
     else:
         print("Station non-existant")
