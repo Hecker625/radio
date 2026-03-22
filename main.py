@@ -1,4 +1,3 @@
-import tkinter as tk
 from playsound import playsound
 from multiprocessing import Process
 
@@ -26,7 +25,7 @@ while True:
     
     while True:
         try:
-            choice = float(input('Enter your frequency: ')).strip()
+            choice = float(input('Enter your frequency: ').strip())
             break
         
         except ValueError as e:
