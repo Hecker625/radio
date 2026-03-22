@@ -26,7 +26,7 @@ while True:
     
     while True:
         try:
-            choice = float(input('Enter your frequency: '))
+            choice = float(input('Enter your frequency: ')).strip()
             break
         
         except ValueError as e:
