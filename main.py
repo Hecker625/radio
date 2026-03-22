@@ -1,3 +1,4 @@
+import tkinter as tk
 from playsound import playsound
 from multiprocessing import Process
 
@@ -23,7 +24,14 @@ while True:
     for station in stations:
         print(station)
     
-    choice = float(input("Enter your frequency: "))
+    while True:
+        try:
+            choice = float(input('Enter your frequency: '))
+            break
+        
+        except ValueError as e:
+            print(f"Typo? I hope so because the computer just got an error. Please try again and actually type a frequency, please (eg. 95.7)")
+
     if choice in stations:
         station = stations[choice]
         radio = Process(target=play, args=(station,))
@@ -35,7 +43,5 @@ while True:
             exit()
         else:
             radio.terminate()
-
-
     else:
         print("Station non-existant")
