@@ -1,34 +1,29 @@
 from playsound import playsound
 
-print("Playing KNKX 88.5")
-playsound("https://knkx-live-a.edge.audiocdn.com/6284_256k")
+stations = {
+    88.5: "https://knkx-live-a.edge.audiocdn.com/6284_256k",
+    92.5: "https://playerservices.streamtheworld.com/api/livestream-redirect/KQMVFM.mp3",
+    94.1: "https://live.amperwave.net/direct/audacy-kswdfmaac-imc",
+    94.9: "https://playerservices.streamtheworld.com/api/livestream-redirect/KUOWFM_HIGH_MP3.mp3",
+    95.7: "https://stream.revma.ihrhls.com/zc2569",
+    96.5: "https://stream.revma.ihrhls.com/zc7788",
+    98.1: "http://classicalking.streamguys1.com/king-fm-mp3",
+    102.5: "https://stream.revma.ihrhls.com/zc7787",
+    106.1: "https://stream.revma.ihrhls.com/zc4257",
+    106.9: "https://playerservices.streamtheworld.com/api/livestream-redirect/KRWMFM.mp3",
+    107.7: "https://live.amperwave.net/direct/audacy-knddfmaac-imc"
+}
 
-print("Playing MOViN 92.5")
-playsound("https://playerservices.streamtheworld.com/api/livestream-redirect/KQMVFM.mp3")
+while True:
+    print("Frequency Options:")
+    for station in stations:
+        print(station)
 
-print("Playing EMMA 94.1")
-playsound("https://live.amperwave.net/direct/audacy-kswdfmaac-imc")
+    choice = float(input("Enter your frequency: "))
+    if choice in stations:
+        station = stations[choice]
+        playsound(station)
+        break
 
-print("Playing KUOW 94.9")
-playsound("https://playerservices.streamtheworld.com/api/livestream-redirect/KUOWFM_HIGH_MP3.mp3")
-
-print("Playing 95.7 The Jet")
-playsound("https://stream.revma.ihrhls.com/zc2569")
-
-print("Playing 96.5 Jack FM")
-playsound("https://stream.revma.ihrhls.com/zc7788")
-
-print("Playing KING 98.1")
-playsound("http://classicalking.streamguys1.com/king-fm-mp3")
-
-print("Playing KZOK 102.5")
-playsound("https://stream.revma.ihrhls.com/zc7787")
-
-print("Playing HITS 106.1")
-playsound("https://stream.revma.ihrhls.com/zc4257")
-
-print("Playing WARM 106.9")
-playsound("https://playerservices.streamtheworld.com/api/livestream-redirect/KRWMFM.mp3")
-
-print("Playing 107.7 THE END")
-playsound("https://live.amperwave.net/direct/audacy-knddfmaac-imc")
+    else:
+        print("Station non-existant")
